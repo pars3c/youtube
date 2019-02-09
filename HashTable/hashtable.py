@@ -17,6 +17,7 @@ class HashTable:
 	def __init__(self):
 		self.capacity = INITIAL_CAPACITY
 		self.size = 0
+		# Number of Buckets = INITIAL_CAPACITY
 		self.buckets = [None]*self.capacity
 	# Generate a hash for a given key
 	# Input:  key - string
@@ -25,7 +26,7 @@ class HashTable:
 		hashsum = 0
 		# For each character in the key
 		for idx, c in enumerate(key):
-			# Add (index + length of key) ^ (current char code)
+			# Add (index + length of key) ^ (current char unicode code)
 			hashsum += (idx + len(key)) ** ord(c)
 			# Perform modulus to keep hashsum in range [0, self.capacity - 1]
 			hashsum = hashsum % self.capacity
